@@ -7,8 +7,8 @@ import * as path from 'path';
 import * as fs from 'fs';
 import * as glob from 'glob';
 
-const DIRECTORY_ACTIONS: string[] = ['update', 'commit', 'revert', 'cleanup', 'log', 'add', 'diff', 'lock', 'unlock', 'merge'];
-const FILE_ACTIONS: string[] = ['update', 'commit', 'revert', 'cleanup', 'log', 'add', 'blame', 'diff', 'lock', 'unlock'];
+const DIRECTORY_ACTIONS: string[] = ['update', 'commit', 'revert', 'cleanup', 'log', 'add', 'diff', 'diff-last', 'lock', 'unlock', 'merge'];
+const FILE_ACTIONS: string[] = ['update', 'commit', 'revert', 'cleanup', 'log', 'add', 'blame', 'diff', 'diff-last', 'lock', 'unlock'];
 
 interface SvnQuickPickItem extends vscode.QuickPickItem {
     action?: string;
@@ -170,7 +170,7 @@ class UriInfo implements UriInfo {
         }
         return quickPickItems.map<SvnQuickPickItem>(action => {
             return {
-                label: 'svn ' + action,
+                label: action === 'diff-last' ? 'svn diff -c last' : 'svn ' + action,
                 description: this.path,
                 path: this.path,
                 action: action
@@ -223,7 +223,36 @@ class TortoiseCommand {
         // todo: Send line number with blame command. https://tortoisesvn.net/docs/release/TortoiseSVN_en/tsvn-automation.html
         return `"${this.tortoiseSVNProcExePath}" /command:${action} /path:"${this._getTargetPath(fileUri)}" /closeonend:${closeonend}`;
     }
+    execDiffLast(fileUri: string) {
+        const targetPath = this._getTargetPath(fileUri);
+        child_process.exec(`svn info -r HEAD "${targetPath}"`, (error, stdout, stderr) => {
+            if (error) {
+                vscode.window.showErrorMessage(`svn info failed: ${stderr}`);
+                return;
+            }
+            const match = stdout.match(/Last Changed Rev:\s*(\d+)/);
+            if (!match) {
+                vscode.window.showErrorMessage('Cannot get Last Changed Rev from svn info.');
+                return;
+            }
+            const lastRev = parseInt(match[1], 10);
+            const prevRev = lastRev - 1;
+            const cmd = `"${this.tortoiseSVNProcExePath}" /command:diff /path:"${targetPath}" /startrev:${prevRev} /endrev:${lastRev}`;
+            child_process.exec(cmd, (err, so, se) => {
+                if (err && !this.tortoiseSVNProcExePathIsExist()) {
+                    vscode.window.showErrorMessage(`Setting "TortoiseSVN.tortoiseSVNProcExePath" is invalid. Please specify a correct one, then restart VSCode.`);
+                    console.log(err);
+                    console.log(so);
+                    console.log(se);
+                }
+            });
+        });
+    }
     exec(action: string, fileUri: string) {
+        if (action === 'diff-last') {
+            this.execDiffLast(fileUri);
+            return;
+        }
         let allFileSave;
         // Can't revert unsaved changes.
         if (action === "revert") {

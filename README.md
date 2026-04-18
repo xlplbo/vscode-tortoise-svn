@@ -1,6 +1,8 @@
-#README
+README
 
 tortoise-svn is a simple extension for VSCode to use TortoiseSVN.
+
+> GitHub Repository: [TangYanxin/vscode-tortoise-svn](https://github.com/TangYanxin/vscode-tortoise-svn)
 
 ## Features
 
@@ -27,6 +29,7 @@ please specify the correct path by setting property `TortoiseSVN.tortoiseSVNProc
 * `Workspace: SVN Diff` : open TortoiseSVN `diff` window
 * `Workspace: SVN Lock` : open TortoiseSVN `lock` window
 * `Workspace: SVN Unlock` : open TortoiseSVN `unlock` window
+* `Workspace: SVN Diff -c Last` : diff the workspace against its last committed revision
 
 #### For the active file which open in text editor and has focus
 * `File: SVN Update` : open TortoiseSVN `update` window
@@ -39,6 +42,7 @@ please specify the correct path by setting property `TortoiseSVN.tortoiseSVNProc
 * `File: SVN Diff` : open TortoiseSVN `diff` window
 * `File: SVN Lock` : open TortoiseSVN `lock` window
 * `File: SVN Unlock` : open TortoiseSVN `unlock` window
+* `File: SVN Diff -c Last` : diff the active file against its last committed revision
 
 #### Others
 * `SVN ... (Select Action)` : show a `dropdown` to select TortoiseSVN action to execute.
@@ -66,6 +70,10 @@ This extension contributes the following settings:
 * `TortoiseSVN.showPath.exclude` : specify `glob pattern` to exclude files and folders. exclude will disable when specify a empty array.
 
 ## Change Log
+### Version 0.1.2
+* add `SVN Diff -c Last` command for both workspace directory and active file
+    - retrieves the last changed revision via `svn info` and opens TortoiseSVN diff between `lastRev-1` and `lastRev`
+
 ### Version 0.1.1
 * when user don't set `TortoiseSVN.tortoiseSVNProcExePath`, get the `TortoiseProc.exe` path from registry 
 * postpone check `TortoiseProc.exe` path until command execution

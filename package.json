@@ -70,6 +70,10 @@
         "title": "Workspace: SVN Merge"
       },
       {
+        "command": "workspace tortoise-svn diff-last",
+        "title": "Workspace: SVN Diff -c Last"
+      },
+      {
         "command": "file tortoise-svn update",
         "title": "File: SVN Update"
       },
@@ -100,6 +104,10 @@
       {
         "command": "file tortoise-svn diff",
         "title": "File: SVN Diff"
+      },
+      {
+        "command": "file tortoise-svn diff-last",
+        "title": "File: SVN Diff -c Last"
       },
       {
         "command": "file tortoise-svn lock",
