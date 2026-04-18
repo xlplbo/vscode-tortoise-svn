@@ -2,7 +2,7 @@
   "name": "tortoise-svn",
   "displayName": "TortoiseSVN",
   "description": "tortoise-svn is a simple extension for VSCode to use TortoiseSVN.",
-  "version": "0.1.1",
+  "version": "0.1.3",
   "publisher": "fantasytyx",
   "author": {
     "name": "TangYaxin",
@@ -31,47 +31,47 @@
     "commands": [
       {
         "command": "workspace tortoise-svn update",
-        "title": "Workspace: SVN Update"
+        "title": "SVN Update WorkSpace"
       },
       {
         "command": "workspace tortoise-svn commit",
-        "title": "Workspace: SVN Commit"
+        "title": "SVN Commit WorkSpace"
       },
       {
         "command": "workspace tortoise-svn log",
-        "title": "Workspace: SVN Log"
+        "title": "SVN Log WorkSpace"
       },
       {
         "command": "workspace tortoise-svn revert",
-        "title": "Workspace: SVN Revert"
+        "title": "SVN Revert WorkSpace"
       },
       {
         "command": "workspace tortoise-svn cleanup",
-        "title": "Workspace: SVN Cleanup"
+        "title": "SVN Cleanup WorkSpace"
       },
       {
         "command": "workspace tortoise-svn add",
-        "title": "Workspace: SVN Add"
+        "title": "SVN Add WorkSpace"
       },
       {
         "command": "workspace tortoise-svn diff",
-        "title": "Workspace: SVN Diff"
+        "title": "SVN Diff WorkSpace"
       },
       {
         "command": "workspace tortoise-svn lock",
-        "title": "Workspace: SVN Lock"
+        "title": "SVN Lock WorkSpace"
       },
       {
         "command": "workspace tortoise-svn unlock",
-        "title": "Workspace: SVN Unlock"
+        "title": "SVN Unlock WorkSpace"
       },
       {
         "command": "workspace tortoise-svn merge",
-        "title": "Workspace: SVN Merge"
+        "title": "SVN Merge WorkSpace"
       },
       {
         "command": "workspace tortoise-svn diff-last",
-        "title": "Workspace: SVN Diff -c Last"
+        "title": "SVN Diff -c Last WorkSpace"
       },
       {
         "command": "file tortoise-svn update",
@@ -120,10 +120,6 @@
       {
         "command": "tortoise-svn ...",
         "title": "SVN ... (Select Action)"
-      },
-      {
-        "command": "tortoise-svn ...(select path)",
-        "title": "SVN ... (Select Path)"
       }
     ],
     "menus": {
@@ -139,10 +135,6 @@
         {
           "command": "tortoise-svn ...",
           "group": "tortoise-svn"
-        },
-        {
-          "command": "tortoise-svn ...(select path)",
-          "group": "tortoise-svn"
         }
       ],
       "editor/context": [
@@ -156,10 +148,6 @@
         },
         {
           "command": "tortoise-svn ...",
-          "group": "tortoise-svn"
-        },
-        {
-          "command": "tortoise-svn ...(select path)",
           "group": "tortoise-svn"
         }
       ]
@@ -235,10 +223,6 @@
       {
         "command": "tortoise-svn ...",
         "key": "alt+s s"
-      },
-      {
-        "command": "tortoise-svn ...(select path)",
-        "key": "alt+s m"
       }
     ]
   },

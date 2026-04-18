@@ -1,4 +1,4 @@
-README
+## README
 
 tortoise-svn is a simple extension for VSCode to use TortoiseSVN.
 
@@ -50,16 +50,15 @@ please specify the correct path by setting property `TortoiseSVN.tortoiseSVNProc
     - Apply to the select file/directory when trigger this command by use explorer context menu.   
     - Apply to the workspace when trigger this command by use command panel(F1/ctrl+shift+p).   
 
-* `SVN ... (Select Path)` : show a `dropdown` to select target `directory` or `file`, then show a new `dropdown` to select TortoiseSVN action to execute.
-
 ### Keybindings
 
-* `alt+s u` : "Workspace: SVN Update"
-* `alt+s c` : "Workspace: SVN Commit"
-* `alt+s l` : "Workspace: SVN Log"
-* `alt+s r` : "Workspace: SVN Revert"
-* `alt+s d` : "Workspace: SVN Diff"
-* `alt+s m` : "SVN ... (Select Path)"
+* `alt+s c` : "SVN Commit WorkSpace"
+* `alt+s u` : "SVN Update WorkSpace"
+* `alt+s a` : "SVN Add WorkSpace" (also "File: SVN Add" when editor has focus)
+* `alt+s l` : "SVN Log WorkSpace" (also "File: SVN Log" when editor has focus)
+* `alt+s r` : "SVN Revert WorkSpace" (also "File: SVN Revert" when editor has focus)
+* `alt+s d` : "SVN Diff WorkSpace" (also "File: SVN Diff" when editor has focus)
+* `alt+s s` : "SVN ... (Select Action)"
 
 ## Extension Settings
 
@@ -70,6 +69,9 @@ This extension contributes the following settings:
 * `TortoiseSVN.showPath.exclude` : specify `glob pattern` to exclude files and folders. exclude will disable when specify a empty array.
 
 ## Change Log
+### Version 0.1.3
+* remove `SVN ... (Select Path)` command and its related keybinding (`alt+s m`)
+
 ### Version 0.1.2
 * add `SVN Diff -c Last` command for both workspace directory and active file
     - retrieves the last changed revision via `svn info` and opens TortoiseSVN diff between `lastRev-1` and `lastRev`

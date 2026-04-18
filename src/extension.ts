@@ -5,7 +5,6 @@ import * as vscode from 'vscode';
 import * as child_process from 'child_process';
 import * as path from 'path';
 import * as fs from 'fs';
-import * as glob from 'glob';
 
 const DIRECTORY_ACTIONS: string[] = ['update', 'commit', 'revert', 'cleanup', 'log', 'add', 'diff', 'diff-last', 'lock', 'unlock', 'merge'];
 const FILE_ACTIONS: string[] = ['update', 'commit', 'revert', 'cleanup', 'log', 'add', 'blame', 'diff', 'diff-last', 'lock', 'unlock'];
@@ -77,64 +76,9 @@ export function activate(context: vscode.ExtensionContext) {
     });
     context.subscriptions.push(disposableNeedChoose);
 
-    let disposableDropdown = vscode.commands.registerCommand('tortoise-svn ...(select path)', (uri: vscode.Uri) => {
-        // exec every time on command trigger
-        getQuickPickItemsFromDir(vscode.workspace.rootPath).then(quickPickItems => {
-            return vscode.window.showQuickPick<SvnQuickPickItem>(quickPickItems);
-        }).then(path => {
-            if (!path) {
-                return;
-            }
-            let uriInfo = new UriInfo(path.path);
-            let actionQuickPickItems = uriInfo.getActionQuickPickItem()
-            vscode.window.showQuickPick<any>(actionQuickPickItems).then((action) => {
-                if (action) {
-                    tortoiseCommand.exec(action.action, action.path);
-                }
-            });
-        });
-        context.subscriptions.push(disposableDropdown);
-    });
 }
 
 
-/**
- * 获取目录下的所有文件夹和文件的绝对路径
- * 
- * @param {string} dirPath
- * @param {Function} callback
- */
-function getQuickPickItemsFromDir(dirPath: string): Promise<SvnQuickPickItem[]> {
-    return new Promise<SvnQuickPickItem[]>((resolve, reject) => {
-        let quickPickItems: SvnQuickPickItem[] = [{
-            label: dirPath,
-            description: dirPath,
-            path: dirPath
-        }];
-        let ignore: any = vscode.workspace.getConfiguration('TortoiseSVN').get('showPath.exclude');
-        let options: any = { cwd: dirPath, mark: true };
-        if (Object.prototype.toString.call(ignore) === '[object Array]' && ignore.length > 0) {
-            options.ignore = ignore;
-        }
-        glob('**', options, (err, paths) => {
-            if (err) throw err;
-            paths.forEach(file => {
-                var lastSep = file.lastIndexOf('/') + 1;
-                if (lastSep === file.length) {
-                    lastSep = 0;
-                }
-                quickPickItems.push({
-                    label: file.substring(lastSep),
-                    description: file.substr(0, lastSep),
-                    path: path.join(vscode.workspace.rootPath, file)
-                });
-            });
-
-            resolve(quickPickItems);
-        });
-    });
-
-}
 
 
 // this method is called when your extension is deactivated

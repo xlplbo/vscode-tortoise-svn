@@ -1,3 +1,6 @@
+### Version 0.1.3
+* remove `SVN ... (Select Path)` command and its related keybinding (`alt+s s`)
+
 ### Version 0.1.2
 * add `SVN Diff -c Last` command for both workspace directory and active file
     - retrieves the last changed revision via `svn info` and opens TortoiseSVN diff between `lastRev-1` and `lastRev`
