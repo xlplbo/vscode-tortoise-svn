@@ -1,1 +1,1 @@
-/// <reference path="../node_modules/vscode/typings/node.d.ts" />
+// Node.js types are provided by @types/node

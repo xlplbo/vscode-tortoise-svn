@@ -18,13 +18,13 @@
     "url": "https://github.com/fantacytyx/vscode-tortoise-svn/issues"
   },
   "engines": {
-    "vscode": "^1.4.0"
+    "vscode": "^1.116.0"
   },
   "categories": [
     "Other"
   ],
   "activationEvents": [
-    "*"
+    "onStartupFinished"
   ],
   "main": "./out/src/extension",
   "contributes": {
@@ -243,13 +243,14 @@
     ]
   },
   "scripts": {
-    "vscode:prepublish": "node ./node_modules/vscode/bin/compile",
-    "compile": "node ./node_modules/vscode/bin/compile -watch -p ./",
-    "postinstall": "node ./node_modules/vscode/bin/install"
+    "vscode:prepublish": "tsc -p ./",
+    "compile": "tsc -watch -p ./"
   },
   "devDependencies": {
-    "typescript": "^1.8.5",
-    "vscode": "^0.11.0"
+    "@types/mocha": "^10.0.10",
+    "@types/node": "^25.6.0",
+    "@types/vscode": "^1.116.0",
+    "typescript": "^5.0.0"
   },
   "dependencies": {
     "glob": "^7.0.6"

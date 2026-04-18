@@ -1,11 +1,13 @@
 {
     "compilerOptions": {
         "module": "commonjs",
-        "target": "es5",
+        "target": "es2020",
+        "lib": ["es2020"],
+        "types": ["node", "vscode", "mocha"],
         "outDir": "out",
-        "noLib": true,
         "sourceMap": true,
-        "rootDir": "."
+        "rootDir": ".",
+        "strict": false
     },
     "exclude": [
         "node_modules",
