@@ -112,9 +112,9 @@ class UriInfo implements UriInfo {
         } else if (this.isDirectory) {
             quickPickItems = DIRECTORY_ACTIONS;
         }
-        return quickPickItems.map<SvnQuickPickItem>(action => {
+        return quickPickItems.filter(a => a !== 'diff').map<SvnQuickPickItem>(action => {
             return {
-                label: action === 'diff-last' ? 'svn diff -c last' : 'svn ' + action,
+                label: action === 'diff-last' ? 'svn diff' : 'svn ' + action,
                 description: this.path,
                 path: this.path,
                 action: action

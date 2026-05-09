@@ -39,10 +39,9 @@ please specify the correct path by setting property `TortoiseSVN.tortoiseSVNProc
 * `File: SVN Cleanup` : open TortoiseSVN `cleanup` window
 * `File: SVN Add` : open TortoiseSVN `add` window
 * `File: SVN Blame` : open TortoiseSVN `Blame` window
-* `File: SVN Diff` : open TortoiseSVN `diff` window
+* `File: SVN Diff` : open TortoiseSVN `diff` the active file against its last committed revision window
 * `File: SVN Lock` : open TortoiseSVN `lock` window
 * `File: SVN Unlock` : open TortoiseSVN `unlock` window
-* `File: SVN Diff -c Last` : diff the active file against its last committed revision
 
 #### Others
 * `SVN ... (Select Action)` : show a `dropdown` to select TortoiseSVN action to execute.
@@ -57,7 +56,7 @@ please specify the correct path by setting property `TortoiseSVN.tortoiseSVNProc
 * `alt+s a` : "SVN Add WorkSpace" (also "File: SVN Add" when editor has focus)
 * `alt+s l` : "SVN Log WorkSpace" (also "File: SVN Log" when editor has focus)
 * `alt+s r` : "SVN Revert WorkSpace" (also "File: SVN Revert" when editor has focus)
-* `alt+s d` : "SVN Diff WorkSpace" (also "File: SVN Diff" when editor has focus)
+* `alt+s d` : "SVN Diff WorkSpace" (also "SVN Diff File" when editor has focus)
 * `alt+s s` : "SVN ... (Select Action)"
 
 ## Extension Settings

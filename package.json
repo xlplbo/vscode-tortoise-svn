@@ -2,7 +2,7 @@
   "name": "tortoise-svn",
   "displayName": "TortoiseSVN",
   "description": "tortoise-svn is a simple extension for VSCode to use TortoiseSVN.",
-  "version": "0.1.3",
+  "version": "1.0.1",
   "publisher": "fantasytyx",
   "author": {
     "name": "TangYaxin",
@@ -103,7 +103,7 @@
       },
       {
         "command": "file tortoise-svn diff",
-        "title": "File: SVN Diff"
+        "title": "SVN Diff File"
       },
       {
         "command": "file tortoise-svn diff-last",
@@ -126,29 +126,37 @@
       "explorer/context": [
         {
           "command": "workspace tortoise-svn update",
-          "group": "tortoise-svn"
+          "group": "tortoise-svn@1"
         },
         {
           "command": "workspace tortoise-svn commit",
-          "group": "tortoise-svn"
+          "group": "tortoise-svn@2"
+        },
+        {
+          "command": "workspace tortoise-svn diff",
+          "group": "tortoise-svn@3"
         },
         {
           "command": "tortoise-svn ...",
-          "group": "tortoise-svn"
+          "group": "tortoise-svn@4"
         }
       ],
       "editor/context": [
         {
           "command": "workspace tortoise-svn update",
-          "group": "tortoise-svn"
+          "group": "tortoise-svn@1"
         },
         {
           "command": "workspace tortoise-svn commit",
-          "group": "tortoise-svn"
+          "group": "tortoise-svn@2"
+        },
+        {
+          "command": "file tortoise-svn diff",
+          "group": "tortoise-svn@3"
         },
         {
           "command": "tortoise-svn ...",
-          "group": "tortoise-svn"
+          "group": "tortoise-svn@4"
         }
       ]
     },
