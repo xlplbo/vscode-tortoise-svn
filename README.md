@@ -39,7 +39,7 @@ please specify the correct path by setting property `TortoiseSVN.tortoiseSVNProc
 * `File: SVN Cleanup` : open TortoiseSVN `cleanup` window
 * `File: SVN Add` : open TortoiseSVN `add` window
 * `File: SVN Blame` : open TortoiseSVN `Blame` window
-* `File: SVN Diff` : open TortoiseSVN `diff` the active file against its last committed revision window
+* `SVN Diff File` : open TortoiseSVN `diff` window
 * `File: SVN Lock` : open TortoiseSVN `lock` window
 * `File: SVN Unlock` : open TortoiseSVN `unlock` window
 
@@ -68,6 +68,14 @@ This extension contributes the following settings:
 * `TortoiseSVN.showPath.exclude` : specify `glob pattern` to exclude files and folders. exclude will disable when specify a empty array.
 
 ## Change Log
+### Version 1.0.1
+* rename `File: SVN Diff` command to `SVN Diff File`
+* add `SVN Diff WorkSpace` to explorer context menu
+* add `SVN Diff File` to editor context menu
+* add sort order for context menu items
+* remove `diff` option from Select Action dropdown list
+* rename `svn diff -c last` label to `svn diff` in Select Action dropdown list
+
 ### Version 0.1.3
 * remove `SVN ... (Select Path)` command and its related keybinding (`alt+s m`)
 
